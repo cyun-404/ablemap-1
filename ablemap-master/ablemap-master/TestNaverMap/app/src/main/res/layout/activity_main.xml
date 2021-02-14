@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/main_btn_search"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_button"
+            android:drawableLeft="@drawable/magnifier"
+            android:gravity="center"
+            android:paddingLeft="30dp"
+            android:text="위치를 입력하세요            "
+            android:textColor="#5E5E5E"
+            app:backgroundTint="#f3f3f3" />
+
+        <FrameLayout
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="30dp">
+
+            <com.gigamole.library.ShadowLayout
+                android:id="@+id/road_shadow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:clipToPadding="false"
+                android:padding="10dp"
+                app:sl_shadow_color="#555555"
+                app:sl_shadowed="true">
+
+                <Button
+                    android:id="@+id/myLocation_btn"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/custom_road_view"
+                    android:backgroundTint="#000000"
+                    android:stateListAnimator="@null"
+                    app:backgroundTint="#FFFFFF" />
+
+            </com.gigamole.library.ShadowLayout>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/road" />
+
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/btn_navi"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_menu_64"
+            tools:ignore="MissingConstraints" />
+
+        <FrameLayout
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:name="com.naver.maps.map.MapFragment">
+            app:navermap_latitude="35.101869"
+            app:navermap_longitude="129.033787"
+            app:navermap_zoom="15"/>
+
+            <com.naver.maps.map.MapView
+                android:id="@+id/map_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/naviView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/navi_menu"/>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
